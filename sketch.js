@@ -10,12 +10,12 @@ function preload() {
 
 function setup() {
   // frameRate(3)
-  createCanvas(800, 400);
+  createCanvas(700, 400);
   // fill('magenta');
   textSize(50);
   textFont(font);
 
-  points = font.textToPoints("JR", 50, 300, 300, {
+  points = font.textToPoints("PCC", 50, 300, 300, {
     sampleFactor:0.2,
   simplifyThreshold:0});
 
