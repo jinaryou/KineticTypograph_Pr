@@ -4,7 +4,6 @@ let bbox;
 
 let r = 25;
 let angle = 0;
-let color;
 
 
 // fonts
@@ -21,40 +20,46 @@ function setup() {
   textSize(fsize);
   // textAlign(CENTER);
 
-  points = font.textToPoints("JR", 0, 0, fsize, {
+  points = font.textToPoints("JR", -170, 100, fsize, {
     samplefactor: 0.1,
   });
 
-  bbox = font.textBounds("JR", 0, 0, fsize);
+  angleMode(DEGREES);
+  rectMode(CENTER);
 
-  angleMode(DEGREES)
+  noStroke();
+  noFill();
 }
 
 function draw() {
   background(0);
+  let distance = dist(mouseX, mouseY, width/2, height/2);
+  translate(width/2, height/2);
+  if (distance <= 30) {
+    angle += 0.1;
+  }
+  rotate(angle);
+  rect(0,0, 50, 50);
 
   push();
-  translate(width/2 - bbox.w/1.5, height/2 + bbox.h/3);
-
-  // noFill()
-  // stroke(255, 0, 0)
-  // rect(bbox.x, bbox.y, bbox.w, bbox.h)
-
   noFill();
 
   if (mouseIsPressed) {
-    color = random(255);
-    fill(0, 50);
-    angle += 2;
-  } else {
-    color = 0
+    angle += 1;
+    size = 50,
+    fill(255, 100)
+  }
+  else {
+    size = 30
   }
 
   for (let i=0; i<points.length; i++) {
-    stroke(i, color, 255),
-    rect(points[i].x + r*cos(angle + i*5), points[i].y, 50, 50)
+    csin = r*sin(angle + i*5);
+    ccos = r*cos(angle + i*5);
+    stroke(i, 0, 255),
+    rect(points[i].x + csin*0, points[i].y + ccos, size, size)
   }
-  angle += 1;
+  angle += 0.5;
   pop();
 
 }
