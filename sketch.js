@@ -38,7 +38,7 @@ function setup() {
       planes[i][j] = new Plane(size/2 + i*size - (size*cols)/2, size/2 + j*size - (size*rows)/2);
     }
   }
-
+  colorMode(HSB);
   angleMode(DEGREES);
   rectMode(CENTER);
 }
@@ -47,9 +47,9 @@ function draw() {
 
   background(0);
   if (on) {
-    background (0);
+    background (240, 150, 30);
   } else (
-    background (0, 0, 139)
+    background (180, 100, 30)
   )
 
   for (let i = 0; i < cols; i++) {
@@ -80,7 +80,7 @@ function draw() {
     depth += 2*sin(angle);
     angle += 1;
     size = 50;
-      fill(255, 100);
+    fill(0, 0, 100, 0.2);
   }
   else {
     size = 30
@@ -88,7 +88,7 @@ function draw() {
 
   for (let i = 0; i < points.length; i++) {
     // normalMaterial();
-    stroke(i, 50, 255);
+    stroke(i*2, 80, 100, 1);
 
     if (toggle) {
       csin = r * sin(angle + i * 5);
